@@ -82,7 +82,8 @@
 
 <div class="form-container">
   <h2>Library Registration</h2>
-  <form action="#" method="POST">
+  <form onsubmit="return handleSubmit(event)">
+    >
     <label for="fullname">Full Name</label>
     <input type="text" id="fullname" name="fullname" required>
 
@@ -120,6 +121,23 @@
     <button type="submit">Register</button>
   </form>
 </div>
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    
+    const password = document.getElementById('password').value;
+    const confirm = document.getElementById('confirmPassword').value;
+    if (password !== confirm) {
+      alert("Passwords do not match!");
+      return false;
+    }
+  
+    // Redirect to confirmation page
+    window.location.href = "confirm.html";
+    return false;
+  }
+  </script>
+  
 
 </body>
 </html>
