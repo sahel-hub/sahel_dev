@@ -28,7 +28,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        bat "docker run -d -p 8081:80 --name devops_container %IMAGE_NAME%"
+                        bat "docker run -d -p 8084:80 --name devops_container %IMAGE_NAME%"
                     } catch (Exception e) {
                         error("❌ Failed to run Docker container.\n" + e.getMessage())
                     }
@@ -39,7 +39,7 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 echo '🔍 Verifying deployment...'
-                bat 'curl http://localhost:8081 || echo Verification failed.'
+                bat 'curl http://localhost:8084 || echo Verification failed.'
             }
         }
     }
