@@ -22,6 +22,14 @@ pipeline {
                     dockerImage.run("-p 8080:80")
                 }
             }
+            
         }
+        stage('Verify Deployment') {
+            steps {
+                echo '🔍 Verifying deployment...'
+                bat 'curl http://localhost:8080'
+            }
+        }
+    }
     }
 }
